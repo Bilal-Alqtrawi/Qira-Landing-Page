@@ -3,7 +3,7 @@ export const site = {
   tagline: "كل التفاصيل. في قِرى.",
   logo: "/logo.svg", // استبدل هذا الملف لتغيير الشعار في جميع الصفحات.
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.qira.ltd",
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "s.14f@outlook.sa",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "966501191554",
   whatsappMessage:
     "مرحبًا، أرغب في معرفة المزيد عن منصة إدارة المطاعم وكيف يمكن أن تناسب نشاطي.",

@@ -262,7 +262,7 @@ export function AuthForm({
     <form className="auth-form" onSubmit={submit}>
       <p className="auth-intro">
         {trial
-          ? "شهران كاملان لاكتشاف تشغيل أذكى. دون بطاقة ائتمانية ودون التزام."
+          ? "شهر كامل لاكتشاف تشغيل أذكى. دون بطاقة ائتمانية ودون التزام."
           : "أهلًا بعودتك. تفاصيل مطعمك تنتظرك في مكان واحد."}
       </p>
       {trial && (
@@ -403,7 +403,7 @@ export function AuthForm({
         {loading
           ? "لحظات ونكون معك..."
           : trial
-            ? "أنشئ حسابي وابدأ الشهرين المجانيين"
+            ? "أنشئ حسابي وابدأ شهر مجاني"
             : "تسجيل الدخول"}
         <Icon
           name={loading ? "loading" : "arrow"}

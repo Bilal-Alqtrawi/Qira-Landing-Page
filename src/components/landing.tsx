@@ -41,7 +41,7 @@ export default function Landing() {
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [workflow.length]);
+  }, []);
   const [role, setRole] = useState(0);
   const [feature, setFeature] = useState(0);
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
@@ -91,7 +91,7 @@ export default function Landing() {
         </a>
         <div className="announcement">
           <span className="announcement-tag">بداية ألطف لمطعمك</span>
-          <span>شهران مجانًا. مساحة أكبر لتجرب، وحرية كاملة لتقرر.</span>
+          <span>شهر مجانًا. مساحة أكبر لتجرب، وحرية كاملة لتقرر.</span>
           <button type="button" onClick={openTrial}>
             ابدأ الآن
             <Icon name="arrow" size={14} />
@@ -210,7 +210,7 @@ export default function Landing() {
                     className="button button-primary button-lg"
                     onClick={openTrial}
                   >
-                    ابدأ تجربتك المجانية لمدة شهرين
+                    ابدأ تجربتك المجانية لمدة شهر
                     <Icon name="arrow" size={19} />
                   </button>
                   <button
@@ -286,7 +286,7 @@ export default function Landing() {
                     <Icon name="bell" size={16} />
                   </span>
                 </div>
-                {/* <Link
+                <Link
                   href="/demo"
                   className="floating-qr"
                   aria-label="جرّب قائمة المطعم الرقمية"
@@ -296,7 +296,7 @@ export default function Landing() {
                   <i>
                     <Icon name="arrowUp" size={12} />
                   </i>
-                </Link> */}
+                </Link>
                 <div className="visual-caption">
                   <span />
                   <p>صورة أوضح لكل تفاصيل يومك.</p>
@@ -634,7 +634,7 @@ export default function Landing() {
                   className="text-button"
                   onClick={openTrial}
                 >
-                  اختبر المنصة على فرعك مجانًا لمدة شهرين
+                  اختبر المنصة على فرعك مجانًا لمدة شهر
                   <Icon name="arrow" size={18} />
                 </button>
               </div>
@@ -853,10 +853,10 @@ export default function Landing() {
                     </div>
                   ))}
                 </div>
-                {/* <Link className="button button-primary" href="/demo">
+                <Link className="button button-primary" href="/demo">
                   اكتشف تجربة عميلك — جرّب قائمة QR الآن
                   <Icon name="arrow" size={17} />
-                </Link> */}
+                </Link>
               </div>
               <Reveal className="phone-scene">
                 <div className="phone-halo" />
@@ -906,6 +906,7 @@ export default function Landing() {
                         alt="برجر Qira الكلاسيكي"
                         width={250}
                         height={165}
+                        loading="lazy"
                       />
                       <span>
                         <Icon name="sparkles" size={10} />
@@ -920,12 +921,12 @@ export default function Landing() {
                         <b>
                           ٤٢ <small>ر.س</small>
                         </b>
-                        {/* <Link
+                        <Link
                           href="/demo"
                           aria-label="إضافة البرجر في القائمة التجريبية"
                         >
                           <Icon name="plus" size={19} />
-                        </Link> */}
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -943,14 +944,14 @@ export default function Landing() {
                         ٢٨ <small>ر.س</small>
                       </strong>
                     </div>
-                    {/* <Link href="/demo" aria-label="استكشف المقبلات">
+                    <Link href="/demo" aria-label="استكشف المقبلات">
                       <Icon name="plus" size={16} />
-                    </Link> */}
+                    </Link>
                   </div>
-                  {/* <Link href="/demo" className="phone-cart">
+                  <Link href="/demo" className="phone-cart">
                     استعرض قائمة المطعم
                     <Icon name="arrow" size={15} />
-                  </Link> */}
+                  </Link>
                   <div className="phone-home-indicator" />
                 </div>
                 <div className="loyalty-float">
@@ -1089,7 +1090,7 @@ export default function Landing() {
                     className="button button-primary full-width"
                     onClick={openTrial}
                   >
-                    ابدأ مجانًا لمدة شهرين
+                    ابدأ مجانًا لمدة شهر
                     <Icon name="arrow" size={17} />
                   </button>
                   <span className="plan-note">
@@ -1265,7 +1266,7 @@ export default function Landing() {
                 </h2>
                 <p>
                   لم تعد بحاجة إلى تخمين ما إذا كانت المنصة مناسبة لك. اختبرها
-                  بنفسك. شهران كاملان مجانًا، دون بطاقة ائتمانية ودون التزام.
+                  بنفسك. شهر كامل مجانًا، دون بطاقة ائتمانية ودون التزام.
                 </p>
                 <p className="muted">
                   جرّب التشغيل، واستكشف المنظومة، ثم اتخذ قرارك بناءً على تجربة
@@ -1437,7 +1438,7 @@ export default function Landing() {
                   البريد الإلكتروني
                 </button>
                 <a
-                  href={`https://wa.me/966558359878?text=${encodeURIComponent("مرحبًا، أرغب في الاستفسار عن المنصة")}`}
+                  href={`https://wa.me/966501191554?text=${encodeURIComponent("مرحبًا، أرغب في الاستفسار عن المنصة")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -1479,7 +1480,7 @@ export default function Landing() {
           </div>
         </footer>
         <a
-          href={`https://wa.me/966558359878?text=${encodeURIComponent("مرحبًا، أرغب في الاستفسار عن المنصة")}`}
+          href={`https://wa.me/966501191554?text=${encodeURIComponent("مرحبًا، أرغب في الاستفسار عن المنصة")}`}
           target="_blank"
           rel="noopener noreferrer"
           className="whatsapp-fab"
@@ -1557,22 +1558,20 @@ export default function Landing() {
                         />
                       ))}
                     </div>
-                    {
-                      tourStep < 4 && (
-                        <button
-                          className="button button-primary"
-                          type="button"
-                          onClick={() => setTourStep(tourStep + 1)}
-                        >
-                          التالي
-                          <Icon name="left" size={15} />
-                        </button>
-                      )
-                      /* : (<Link className="button button-primary" href="/demo">
-                      جرّب الطلب الآن // <Icon name="arrow" size={15} />
-                      {" "}
-                    </Link>) */
-                    }
+                    {tourStep < 4 ? (
+                      <button
+                        className="button button-primary"
+                        type="button"
+                        onClick={() => setTourStep(tourStep + 1)}
+                      >
+                        التالي
+                        <Icon name="left" size={15} />
+                      </button>
+                    ) : (
+                      <Link className="button button-primary" href="/demo">
+                        جرّب الطلب الآن // <Icon name="arrow" size={15} />{" "}
+                      </Link>
+                    )}
                   </div>
                 </div>
               )}

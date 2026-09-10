@@ -41,7 +41,7 @@ export default function HomePage() {
         ],
         offers: {
           "@type": "Offer",
-          name: "تجربة مجانية لمدة شهرين",
+          name: "تجربة مجانية لمدة شهر",
           price: "0",
           priceCurrency: "SAR",
           description:

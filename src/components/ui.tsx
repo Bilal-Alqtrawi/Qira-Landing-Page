@@ -328,7 +328,7 @@ export function Reassurance({ light = false }: { light?: boolean }) {
     <div className={`reassurance ${light ? "light" : ""}`}>
       <span>
         <Icon name="check" size={14} />
-        شهران مجانًا
+        شهر مجانًا
       </span>
       <i />
       <span>دون بطاقة ائتمانية</span>

@@ -50,7 +50,7 @@ try {
   await expect(page.getByRole("dialog")).toHaveCount(0);
   check("Tour opens, changes views, and closes with Escape");
   const faq = page.getByRole("button", {
-    name: /ماذا يحدث بعد انتهاء الشهرين/,
+    name: /ماذا يحدث بعد انتهاء الشهر/,
   });
   await faq.click();
   await expect(faq).toHaveAttribute("aria-expanded", "true");
@@ -90,7 +90,7 @@ try {
   await auth.locator("[name=password]").fill(password);
   await auth.locator("[name=consent]").check();
   await auth
-    .getByRole("button", { name: "أنشئ حسابي وابدأ الشهرين المجانيين" })
+    .getByRole("button", { name: "أنشئ حسابي وابدأ الشهر المجاني" })
     .click();
   await page.waitForURL("**/dashboard");
   await expect(page.locator(".workspace-onboarding")).toBeVisible();

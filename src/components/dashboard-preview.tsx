@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Icon } from "./ui";
-import { site } from "@/lib/site";
 import Image from "next/image";
 
 const periods = ["هذا الأسبوع", "هذا الشهر", "اليوم"];
@@ -106,12 +105,7 @@ export default function DashboardPreview({
                   <div className="preview-greeting">
                     <div>
                       <b>كل التفاصيل، أمامك.</b>
-                      <span>إليك ملخص أداء مطعمك اليوم</span>
                     </div>
-                    <span className="live-label">
-                      <i />
-                      تحديث مباشر
-                    </span>
                   </div>
                   <div className="preview-kpis">
                     <div className="preview-kpi">

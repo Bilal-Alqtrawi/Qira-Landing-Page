@@ -27,7 +27,7 @@ export function ContactForm({
     setLoading(true);
     const fields = Object.fromEntries(new FormData(form));
     try {
-      const response = await fetch("https://formspree.io/f/mbgjavkb", {
+      const response = await fetch("https://formspree.io/f/mbgjqege", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

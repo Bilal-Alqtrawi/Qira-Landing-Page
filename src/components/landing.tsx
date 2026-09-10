@@ -286,7 +286,7 @@ export default function Landing() {
                     <Icon name="bell" size={16} />
                   </span>
                 </div>
-                <Link
+                {/* <Link
                   href="/demo"
                   className="floating-qr"
                   aria-label="جرّب قائمة المطعم الرقمية"
@@ -296,7 +296,7 @@ export default function Landing() {
                   <i>
                     <Icon name="arrowUp" size={12} />
                   </i>
-                </Link>
+                </Link> */}
                 <div className="visual-caption">
                   <span />
                   <p>صورة أوضح لكل تفاصيل يومك.</p>
@@ -485,7 +485,12 @@ export default function Landing() {
                   </svg>
                   <div className="system-center">
                     {connected ? (
-                      <Image src={site.logo} alt="Qira" width={54} height={54} />
+                      <Image
+                        src={site.logo}
+                        alt="Qira"
+                        width={54}
+                        height={54}
+                      />
                     ) : (
                       <Icon name="store" size={35} />
                     )}
@@ -848,10 +853,10 @@ export default function Landing() {
                     </div>
                   ))}
                 </div>
-                <Link className="button button-primary" href="/demo">
+                {/* <Link className="button button-primary" href="/demo">
                   اكتشف تجربة عميلك — جرّب قائمة QR الآن
                   <Icon name="arrow" size={17} />
-                </Link>
+                </Link> */}
               </div>
               <Reveal className="phone-scene">
                 <div className="phone-halo" />
@@ -915,12 +920,12 @@ export default function Landing() {
                         <b>
                           ٤٢ <small>ر.س</small>
                         </b>
-                        <Link
+                        {/* <Link
                           href="/demo"
                           aria-label="إضافة البرجر في القائمة التجريبية"
                         >
                           <Icon name="plus" size={19} />
-                        </Link>
+                        </Link> */}
                       </div>
                     </div>
                   </div>
@@ -938,14 +943,14 @@ export default function Landing() {
                         ٢٨ <small>ر.س</small>
                       </strong>
                     </div>
-                    <Link href="/demo" aria-label="استكشف المقبلات">
+                    {/* <Link href="/demo" aria-label="استكشف المقبلات">
                       <Icon name="plus" size={16} />
-                    </Link>
+                    </Link> */}
                   </div>
-                  <Link href="/demo" className="phone-cart">
+                  {/* <Link href="/demo" className="phone-cart">
                     استعرض قائمة المطعم
                     <Icon name="arrow" size={15} />
-                  </Link>
+                  </Link> */}
                   <div className="phone-home-indicator" />
                 </div>
                 <div className="loyalty-float">
@@ -1552,21 +1557,22 @@ export default function Landing() {
                         />
                       ))}
                     </div>
-                    {tourStep < 4 ? (
-                      <button
-                        className="button button-primary"
-                        type="button"
-                        onClick={() => setTourStep(tourStep + 1)}
-                      >
-                        التالي
-                        <Icon name="left" size={15} />
-                      </button>
-                    ) : (
-                      <Link className="button button-primary" href="/demo">
-                        جرّب الطلب الآن
-                        <Icon name="arrow" size={15} />
-                      </Link>
-                    )}
+                    {
+                      tourStep < 4 && (
+                        <button
+                          className="button button-primary"
+                          type="button"
+                          onClick={() => setTourStep(tourStep + 1)}
+                        >
+                          التالي
+                          <Icon name="left" size={15} />
+                        </button>
+                      )
+                      /* : (<Link className="button button-primary" href="/demo">
+                      جرّب الطلب الآن // <Icon name="arrow" size={15} />
+                      {" "}
+                    </Link>) */
+                    }
                   </div>
                 </div>
               )}

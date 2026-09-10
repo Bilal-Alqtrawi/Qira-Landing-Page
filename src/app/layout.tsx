@@ -16,12 +16,12 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Qira | مطعمك بالكامل. في منصة واحدة.",
-    template: "%s | Qira",
+    default: "مطعم قِرى | Qira - مطعمك بالكامل في منصة واحدة",
+    template: "%s | مطعم قِرى",
   },
   description:
-    "منصة Qira السحابية تجمع إدارة المطاعم، الطلب عبر QR، المطبخ الرقمي، نقطة البيع والفوترة الإلكترونية في منظومة واحدة. ابدأ تجربتك المجانية لمدة شهر.",
-  applicationName: "Qira",
+    "منصة قِرى (Qira) السحابية تجمع إدارة المطاعم، الطلب عبر QR، المطبخ الرقمي، نقطة البيع والفوترة الإلكترونية في منظومة واحدة. ابدأ تجربتك المجانية.",
+  applicationName: "مطعم قِرى",
   keywords: [
     "إدارة المطاعم",
     "نقطة بيع",
@@ -31,29 +31,31 @@ export const metadata: Metadata = {
     "الفوترة الإلكترونية",
     "المطبخ الرقمي",
     "Qira",
+    "مطعم قِرى",
+    "قِرى",
   ],
   alternates: { canonical: "/", languages: { "ar-SA": "/" } },
   openGraph: {
     type: "website",
     locale: "ar_SA",
-    siteName: "Qira",
-    title: "مطعمك بالكامل. في منصة واحدة.",
+    siteName: "مطعم قِرى | Qira",
+    title: "مطعم قِرى | مطعمك بالكامل في منصة واحدة",
     description:
-      "من الطلب الأول إلى الفاتورة والتقارير. Qira تجمع كل التفاصيل. جرّبها مجانًا لمدة شهر.",
+      "من الطلب الأول إلى الفاتورة والتقارير. منصة قِرى تجمع كل التفاصيل. جرّبها مجانًا.",
     url: "/",
     images: [
       {
-        url: "/burger.jpg",
+        url: "/logo.svg",
         width: 1200,
         height: 630,
-        alt: "Qira — منصة متكاملة لإدارة المطاعم",
+        alt: "مطعم قِرى — منصة متكاملة لإدارة المطاعم",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Qira | مطعمك بالكامل. في منصة واحدة.",
-    images: ["/burger.jpg"],
+    title: "مطعم قِرى | Qira - مطعمك بالكامل في منصة واحدة",
+    images: ["/logo.svg"],
   },
   icons: { icon: "/logo.svg", apple: "/logo.svg" },
   robots: { index: true, follow: true },

@@ -4,6 +4,7 @@ import { Cairo } from "next/font/google";
 import { site } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
@@ -74,6 +75,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Analytics />
+        <GoogleAnalytics
+          gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYSTIC as string}
+        />
       </body>
     </html>
   );

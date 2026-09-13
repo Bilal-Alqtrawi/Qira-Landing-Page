@@ -17,6 +17,7 @@ import { navLinks, site } from "@/lib/site";
 import { AuthForm, ContactForm } from "./forms";
 import DashboardPreview from "./dashboard-preview";
 import { Icon, Logo, Modal, Reassurance, Reveal, SectionHeading } from "./ui";
+import { useNationalDayTheme } from "@/lib/national-day";
 import Image from "next/image";
 
 type ModalType =
@@ -30,6 +31,10 @@ type ModalType =
   | null;
 
 export default function Landing() {
+  const isNationalDay = useNationalDayTheme();
+  const accentColor = isNationalDay ? "#006C35" : "#EE7158";
+  const accentRgba = (a: number) =>
+    isNationalDay ? `rgba(0, 108, 53, ${a})` : `rgba(238, 113, 88, ${a})`;
   const [modal, setModal] = useState<ModalType>(null);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeNav, setActiveNav] = useState("home");
@@ -90,16 +95,32 @@ export default function Landing() {
           انتقل إلى المحتوى
         </a>
         <div className="announcement">
-          <span className="announcement-tag">بداية ألطف لمطعمك</span>
-          <span>شهر مجانًا. مساحة أكبر لتجرب، وحرية كاملة لتقرر.</span>
-          <button type="button" onClick={openTrial}>
-            ابدأ الآن
-            <Icon name="arrow" size={14} />
-          </button>
+          {isNationalDay ? (
+            <>
+              <span className="announcement-tag">اليوم الوطني السعودي</span>
+              <span>
+                كل عام وأنتم بألف خير، بمناسبة اليوم الوطني السعودي. شهر مجانًا
+                لكل مطعم جديد.
+              </span>
+              <button type="button" onClick={openTrial}>
+                ابدأ الآن
+                <Icon name="arrow" size={14} />
+              </button>
+            </>
+          ) : (
+            <>
+              <span className="announcement-tag">بداية ألطف لمطعمك</span>
+              <span>شهر مجانًا. مساحة أكبر لتجرب، وحرية كاملة لتقرر.</span>
+              <button type="button" onClick={openTrial}>
+                ابدأ الآن
+                <Icon name="arrow" size={14} />
+              </button>
+            </>
+          )}
         </div>
         <header className="site-header">
           <div className="container nav-container">
-            <Logo />
+            <Logo withBadge={isNationalDay} />
             <nav className="desktop-nav" aria-label="القائمة الرئيسية">
               {navLinks.map(([name, id]) => (
                 <a
@@ -414,8 +435,8 @@ export default function Landing() {
                         display: "flex",
                         alignItems: "center",
                         gap: "10px",
-                        backgroundColor: "rgba(238, 113, 88, 0.05)",
-                        border: "1px solid rgba(238, 113, 88, 0.15)",
+                        backgroundColor: accentRgba(0.05),
+                        border: `1px solid ${accentRgba(0.15)}`,
                         borderRadius: "6px",
                         padding: "8px 12px",
                         width: "100%",
@@ -429,8 +450,8 @@ export default function Landing() {
                           width: "18px",
                           height: "18px",
                           borderRadius: "50%",
-                          backgroundColor: "rgba(238, 113, 88, 0.12)",
-                          color: "#EE7158",
+                          backgroundColor: accentRgba(0.12),
+                          color: accentColor,
                           flexShrink: 0,
                         }}
                       >
@@ -478,7 +499,13 @@ export default function Landing() {
                   <svg viewBox="0 0 460 360" fill="none" aria-hidden="true">
                     <path
                       d="M230 170L90 74M230 170L370 74M230 170L70 230M230 170L390 230M230 170L230 315"
-                      stroke={connected ? "#188B8A" : "#d3d9d5"}
+                      stroke={
+                        connected
+                          ? isNationalDay
+                            ? "#006C35"
+                            : "#188B8A"
+                          : "#d3d9d5"
+                      }
                       strokeWidth="1.5"
                       strokeDasharray={connected ? "0" : "5 7"}
                     />
@@ -486,7 +513,9 @@ export default function Landing() {
                   <div className="system-center">
                     {connected ? (
                       <Image
-                        src={site.logo}
+                        src={
+                          isNationalDay ? "/logo-national-day.svg" : site.logo
+                        }
                         alt="Qira"
                         width={54}
                         height={54}
@@ -504,7 +533,13 @@ export default function Landing() {
                     { icon: "receipt", name: "الفواتير" },
                   ].map((item, i) => (
                     <div className={`system-node node-${i}`} key={item.name}>
-                      <span>
+                      <span
+                        style={{
+                          background: isNationalDay
+                            ? "var(--cream)"
+                            : "#f0f2e8",
+                        }}
+                      >
                         <Icon name={item.icon} size={23} />
                       </span>
                       <b>{item.name}</b>
@@ -549,7 +584,7 @@ export default function Landing() {
                   <>
                     من لحظة مسح رمز QR…
                     <br />
-                    <span style={{ color: "#EE7158" }}>
+                    <span style={{ color: accentColor }}>
                       حتى اكتمال الفاتورة.
                     </span>
                   </>
@@ -584,7 +619,9 @@ export default function Landing() {
                     className={`workflow-step ${step === i ? "active" : ""}`}
                     onClick={() => setStep(i)}
                   >
-                    <span className="workflow-icon">
+                    <span
+                      className={`workflow-icon ${step === i ? `shadow-[0_5px_16px_${isNationalDay ? "var(--muted)" : "#ee715827"}]!` : ""} `}
+                    >
                       <Icon name={item.icon} size={29} />
                       <i>{String(i + 1).padStart(2, "0")}</i>
                     </span>
@@ -703,7 +740,7 @@ export default function Landing() {
                     <>
                       لكل فرد في فريقك،
                       <br />
-                      <span style={{ color: "#EE7158" }}>
+                      <span style={{ color: accentColor }}>
                         ما يحتاج إليه فقط.
                       </span>
                     </>
@@ -745,7 +782,15 @@ export default function Landing() {
                   className="role-panel"
                 >
                   <div className="role-description">
-                    <span className="role-avatar">
+                    <span
+                      className="role-avatar"
+                      style={{
+                        background: isNationalDay ? "var(--cream)" : "#fcf0e6;",
+                        color: isNationalDay ? "var(--muted)" : "",
+                        borderColor: isNationalDay ? "var(--muted)" : "",
+                         
+                      }}
+                    >
                       <Icon name={roles[role].icon} size={32} />
                     </span>
                     <span className="eyebrow">مساحة عمل مصممة لك</span>
@@ -825,7 +870,7 @@ export default function Landing() {
                     <>
                       تجربة تُشبه التطبيق.
                       <br />
-                      <span style={{ color: "#EE7158" }}>
+                      <span style={{ color: accentColor }}>
                         بدون تحميل تطبيق.
                       </span>
                     </>
@@ -875,7 +920,12 @@ export default function Landing() {
                     </span>
                   </div>
                   <div className="phone-menu-head">
-                    <Image src={site.logo} alt="" width={33} height={33} />
+                    <Image
+                      src={isNationalDay ? "/logo-national-day.svg" : site.logo}
+                      alt=""
+                      width={33}
+                      height={33}
+                    />
                     <div>
                       <b>أهلًا بك في Qira</b>
                       <small>لأوقات ألذّ.</small>
@@ -980,7 +1030,13 @@ export default function Landing() {
               </Reveal>
             </div>
             <div className="container">
-              <div className="relationship-note">
+              <div
+                className="relationship-note"
+                style={{
+                  background: isNationalDay ? "var(--line)" : "#f6f7ec",
+                  borderColor: isNationalDay ? "var(--teal)" : "",
+                }}
+              >
                 <Icon name="heart" size={25} />
                 <div>
                   <h3>
@@ -1058,17 +1114,38 @@ export default function Landing() {
                 description="لماذا تختار باقة كبيرة فقط لأن الميزة التي تحتاج إليها موجودة فيها؟ ولماذا تقبل بباقة صغيرة لا تلبي احتياجاتك؟"
               />
               <div className="pricing-formula">
-                <span>نظام أساسي للتشغيل اليومي</span>
+                <span
+                  className={`pricing-formula-item ${isNationalDay ? "bg-(--cream)!" : "bg-[#f2f5e9]!"}`}
+                >
+                  نظام أساسي للتشغيل اليومي
+                </span>
                 <Icon name="plus" size={17} />
-                <span>ميزات متقدمة، وقت ما تحتاجها</span>
+                <span className="pricing-formula-item">
+                  ميزات متقدمة، وقت ما تحتاجها
+                </span>
               </div>
               <div className="pricing-layout">
-                <Reveal className="core-plan">
-                  <div className="core-plan-label">
-                    <span className="live-dot" />
+                <Reveal
+                  className={`core-plan ${isNationalDay ? "bg-(--cream-soft) border-(--teal)!" : "bg-[#fffcf5]!"}`}
+                >
+                  <div
+                    className={`core-plan-label ${isNationalDay ? "border-(--secondary-ink)!  bg-(--secondary-ink)/20 text-(--muted)!" : "bg-[#fcf1e6]"}`}
+                  >
+                    <span
+                      className={`live-dot  ${isNationalDay ? "bg-(--teal-strong)!" : "bg-[#c78e60]!"} `}
+                    />
                     البداية الصحيحة
                   </div>
-                  <span className="core-plan-icon">
+                  <span
+                    className="core-plan-icon"
+                    style={{
+                      background: isNationalDay ? "var(--line)" : "#f9e9db",
+                      color: isNationalDay ? "var(--muted)" : "#83624f",
+                      borderColor: isNationalDay
+                        ? "var(--cream-soft)"
+                        : "#f0dbca",
+                    }}
+                  >
                     <Icon name="layers" size={31} />
                   </span>
                   <h3>النظام الأساسي</h3>
@@ -1192,7 +1269,7 @@ export default function Landing() {
                   eyebrow="الأسئلة الشائعة"
                   title={
                     <>
-                      <span style={{ color: "#EE7158" }}>كل ما يطمئنك،</span>
+                      <span style={{ color: accentColor }}>كل ما يطمئنك،</span>
                       <br />
                       قبل البداية.
                     </>
@@ -1397,12 +1474,14 @@ export default function Landing() {
           </section>
         </main>
 
-        <footer className="site-footer">
+        <footer
+          className={`${isNationalDay ? "bg-(--line)/20!" : "bg-[#f5f5eaf0]!"}  site-footer`}
+        >
           <div className="container">
             <div className="footer-top">
               <div className="footer-about">
                 <Image
-                  src="/logo.svg"
+                  src={isNationalDay ? "/logo-national-day.svg" : site.logo}
                   width={110}
                   height={36}
                   alt="Qira"

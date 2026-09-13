@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Icon } from "./ui";
 import Image from "next/image";
+import { useNationalDayTheme } from "@/lib/national-day";
 
 const periods = ["هذا الأسبوع", "هذا الشهر", "اليوم"];
 const values = ["١٢٬٤٥٠", "٤٨٬٧٢٠", "٣٬٨٤٠"];
@@ -19,6 +20,8 @@ export default function DashboardPreview({
   expanded?: boolean;
   onExplore?: () => void;
 }) {
+  const isNationalDay = useNationalDayTheme();
+
   const [period, setPeriod] = useState(0);
   const [view, setView] = useState("dashboard");
   const [branch, setBranch] = useState(false);
@@ -52,8 +55,15 @@ export default function DashboardPreview({
         </button>
       </div>
       <div className="preview-app">
-        <aside className="preview-sidebar">
-          <Image src="/logo2.svg" width={30} height={30} alt="Qira" />
+        <aside
+          className={`${isNationalDay ? "bg-(--line)!" : "bg-(--ink)!"} preview-sidebar`}
+        >
+          <Image
+            src={isNationalDay ? "/logo-national-day.svg" : "/logo2.svg"}
+            width={30}
+            height={30}
+            alt="Qira"
+          />
           <div className="preview-nav">
             {["dashboard", "bag", "chef", "chart", "users"].map((icon) => (
               <button

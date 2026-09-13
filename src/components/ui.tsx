@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -72,9 +72,11 @@ import {
   Printer,
   Copy,
   Circle,
+  Flag,
   type LucideIcon,
 } from "lucide-react";
 import { site } from "@/lib/site";
+import { useNationalDayTheme } from "@/lib/national-day";
 import Image from "next/image";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -145,6 +147,7 @@ const iconMap: Record<string, LucideIcon> = {
   reset: RotateCcw,
   print: Printer,
   copy: Copy,
+  flag: Flag,
 };
 export function Icon({
   name,
@@ -165,21 +168,92 @@ export function Icon({
     />
   );
 }
+
+export function getFlagEmoji(countryCode: string): string {
+  if (!countryCode || countryCode.length !== 2) return "";
+
+  const codePoints = countryCode
+    .toUpperCase()
+    .split("")
+    .map((char) => 127397 + char.charCodeAt(0));
+
+  return String.fromCodePoint(...codePoints);
+}
+
+export function CountryFlag({
+  code,
+  size = 20,
+  className = "",
+}: {
+  code: string;
+  size?: number;
+  className?: string;
+}) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  if (!code) return null;
+  const isoCode = code.toLowerCase();
+  const height = Math.round((size * 2) / 3);
+
+  return (
+    <span
+      className={`relative inline-flex items-center justify-center shrink-0 ${className}`}
+      style={{ width: size, height }}
+    >
+      {(!isLoaded || hasError) && (
+        <Icon
+          name="flag"
+          size={Math.round(size * 0.75)}
+          className="text-gray-400 animate-pulse"
+        />
+      )}
+
+      {!hasError && (
+        <Image
+          src={`https://flagcdn.com/${isoCode}.svg`}
+          alt={`علم ${code}`}
+          width={size}
+          height={height}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setHasError(true)}
+          className={`rounded-xs object-cover transition-opacity duration-300 ${
+            isLoaded
+              ? "opacity-100 block"
+              : "opacity-0 absolute inset-0 pointer-events-none"
+          }`}
+        />
+      )}
+    </span>
+  );
+}
+
 export function Logo({
   light = false,
   compact = false,
+  withBadge = false,
 }: {
   light?: boolean;
   compact?: boolean;
+  withBadge?: boolean;
 }) {
+  const isNationalDay = useNationalDayTheme();
+  const logoSrc = isNationalDay ? "/logo-national-day.svg" : site.logo;
   return (
     <Link
       className={`brand ${light ? "brand-light" : ""}`}
       href="/"
       aria-label="Qira — الرئيسية"
     >
-      <Image src={site.logo} width={46} height={46} alt="" />
+      <Image src={logoSrc} width={46} height={46} alt="" />
       <span className="brand-word"></span>
+      {withBadge && (
+        <span className="national-day-badge">
+          {/* <Icon name="flag" size={12} /> */}
+          <CountryFlag code="sa" size={20} />
+          <span>اليوم الوطني السعودي</span>
+        </span>
+      )}
     </Link>
   );
 }

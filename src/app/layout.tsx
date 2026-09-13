@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Cairo } from "next/font/google";
 import { site } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
+import NationalDayTheme from "@/components/national-day-theme";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -72,6 +73,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
+      <head>
+        <NationalDayTheme />
+      </head>
       <body>
         {children}
         <Analytics />

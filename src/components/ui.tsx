@@ -295,10 +295,10 @@ export function SectionHeading({
     <Reveal
       className={`section-heading ${center ? "center" : ""} ${light ? "on-dark" : ""}`}
     >
-      <span className="eyebrow">
+      {/* <span className="eyebrow">
         <span />
         {eyebrow}
-      </span>
+      </span> */}
       <h2>{title}</h2>
       {description && <p>{description}</p>}
     </Reveal>

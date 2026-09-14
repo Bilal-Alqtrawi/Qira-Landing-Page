@@ -198,10 +198,6 @@ export default function Landing() {
             <div className="hero-grid-background" />
             <div className="container hero-layout">
               <div className="hero-copy">
-                <span className="hero-eyebrow">
-                  <span className="live-dot" />
-                  منصة سحابية متكاملة لإدارة المطاعم
-                </span>
                 <h1>
                   مطعمك بالكامل.
                   <br />
@@ -392,7 +388,7 @@ export default function Landing() {
               <div className="problem-copy">
                 <SectionHeading
                   center={false}
-                  eyebrow="نعرف كيف يبدو يومك"
+                  eyebrow=""
                   title={
                     <>
                       لا ينبغي أن تحتاج إلى{" "}
@@ -788,7 +784,6 @@ export default function Landing() {
                         background: isNationalDay ? "var(--cream)" : "#fcf0e6;",
                         color: isNationalDay ? "var(--muted)" : "",
                         borderColor: isNationalDay ? "var(--muted)" : "",
-                         
                       }}
                     >
                       <Icon name={roles[role].icon} size={32} />

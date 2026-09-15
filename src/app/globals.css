@@ -453,10 +453,10 @@ svg {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: var(--teal, #006c35);
-  color: #fff;
+  background: #cef8e2ac;
+  color: var(--teal-strong);
   border-radius: 999px;
-  padding: 4px 10px 4px 8px;
+  padding: 5px 10px 5px 16px;
   font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
@@ -464,9 +464,39 @@ svg {
 }
 .national-day-badge svg,
 .national-day-badge span img {
-  transform-origin: 0% 50%;
-  animation: flag-flutter 1.6s ease-in-out infinite;
+  transform-origin: left center;
+  animation: real-flag-wave 1.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
 }
+
+/* Animations */
+@keyframes real-flag-wave {
+  0% {
+    transform: perspective(100px) rotateY(0deg) rotateZ(0deg) skewY(0deg)
+      scaleY(1);
+  }
+  20% {
+    transform: perspective(100px) rotateY(-18deg) rotateZ(-4deg) skewY(-6deg)
+      scaleY(0.94);
+  }
+  40% {
+    transform: perspective(100px) rotateY(12deg) rotateZ(2deg) skewY(4deg)
+      scaleY(1.03);
+  }
+  60% {
+    transform: perspective(100px) rotateY(-14deg) rotateZ(-2deg) skewY(-4deg)
+      scaleY(0.96);
+  }
+  80% {
+    transform: perspective(100px) rotateY(8deg) rotateZ(3deg) skewY(2deg)
+      scaleY(1.02);
+  }
+  100% {
+    transform: perspective(100px) rotateY(0deg) rotateZ(0deg) skewY(0deg)
+      scaleY(1);
+  }
+}
+
 @keyframes flag-flutter {
   0%,
   100% {
@@ -6112,8 +6142,8 @@ svg {
     gap: 13px;
   }
   .brand > img {
-    width: 36px;
-    height: 36px;
+    width: 75px;
+    height: 75px;
   }
   .brand-word {
     font-size: 26px;
@@ -7917,8 +7947,8 @@ svg {
     gap: 5px;
   }
   .brand > img {
-    width: 31px;
-    height: 31px;
+    width: 60px;
+    height: 60px;
   }
   .brand-word {
     font-size: 23px;

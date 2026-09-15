@@ -78,6 +78,7 @@ import {
 import { site } from "@/lib/site";
 import { useNationalDayTheme } from "@/lib/national-day";
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
 
 const iconMap: Record<string, LucideIcon> = {
   arrow: ArrowLeft,
@@ -239,6 +240,8 @@ export function Logo({
 }) {
   const isNationalDay = useNationalDayTheme();
   const logoSrc = isNationalDay ? "/logo-national-day.svg" : site.logo;
+
+  const isMobile = useMediaQuery({ query: "(max-width: 719px)" });
   return (
     <Link
       className={`brand ${light ? "brand-light" : ""}`}
@@ -250,7 +253,7 @@ export function Logo({
       {withBadge && (
         <span className="national-day-badge">
           {/* <Icon name="flag" size={12} /> */}
-          <CountryFlag code="sa" size={20} />
+          <CountryFlag code="sa" size={isMobile ? 35 : 25} />
           <span>اليوم الوطني السعودي</span>
         </span>
       )}

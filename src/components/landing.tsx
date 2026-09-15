@@ -30,6 +30,14 @@ type ModalType =
   | "feature"
   | null;
 
+const problems = [
+  "تصعب عليك متابعة الفواتير",
+  "تراجع الحسابات والفروقات يدويًا.",
+  "تتأخر في معرفة أداء فروعك.",
+  "ما عندك برنامج ولاء يشجع عملاءك يرجعون.",
+  "تدخل نفس البيانات أكثر من مرة",
+];
+
 export default function Landing() {
   const isNationalDay = useNationalDayTheme();
   const accentColor = isNationalDay ? "#006C35" : "#EE7158";
@@ -391,23 +399,20 @@ export default function Landing() {
                   eyebrow=""
                   title={
                     <>
-                      لا ينبغي أن تحتاج إلى{" "}
-                      <span className="coral-text">خمس أدوات</span> لتعرف ما
-                      يحدث في مطعم واحد.
+                      مطعمك <span className="coral-text">يحتاج نظام </span>
+                      واحد فقط
                     </>
                   }
                 />
                 <p>
-                  عندما تصبح إدارة المطعم مجموعة من الأنظمة المنفصلة… نظام لنقطة
-                  البيع، وآخر لقائمة الطعام، وأدوات منفصلة للطلبات والمطبخ،
-                  وجداول لمراجعة الأرقام، ومتابعة مستمرة للتأكد من سلامة
-                  الفواتير والبيانات الضريبية.
+                  الكاشير، المدفوعات ، المنيو ، المطبخ ، الضريبة والحسابات...
+                  أنظمة متفرفة، وتعبها عليك.
                 </p>
                 <h3
                   className="problem-list-title"
                   style={{ marginBottom: "12px", fontSize: "1rem" }}
                 >
-                  ما الذي يعنيه ذلك في يومك؟
+                  وش يصير مع هالتشتّت؟
                 </h3>
                 <div
                   className="problem-grid"
@@ -418,13 +423,7 @@ export default function Landing() {
                     width: "100%",
                   }}
                 >
-                  {[
-                    "قلق مستمر بشأن الامتثال الضريبي ومتطلبات زاتكا",
-                    "وقت ضائع في مراجعة المناوبات والفروقات النقدية يدويًا",
-                    "صعوبة الحصول على رؤية فورية لأداء الفروع",
-                    "عملاء يزورونك مرة… دون نظام فعّال يشجعهم على العودة",
-                    "بيانات مكررة ومساحة أكبر للخطأ البشري",
-                  ].map((text) => (
+                  {problems.map((text) => (
                     <div
                       key={text}
                       style={{
@@ -578,27 +577,14 @@ export default function Landing() {
                 eyebrow="منظومة واحدة. رحلة تشغيل متصلة."
                 title={
                   <>
-                    من لحظة مسح رمز QR…
+                    من أول طلب
                     <br />
-                    <span style={{ color: accentColor }}>
-                      حتى اكتمال الفاتورة.
-                    </span>
+                    <span style={{ color: accentColor }}>لين آخر حساب.</span>
                   </>
                 }
-                description="صُممت Qira لتربط رحلة الطلب بالكامل. كل مرحلة تعرف ما قبلها، وتجهّز لما بعدها."
+                description="قِرى الطلب بالمطبخ والكاشير، ويخليك تتابع كل خطوة"
               />
-              <div className="hierarchy">
-                <span>المنصة</span>
-                <Icon name="left" size={12} />
-                <span>الشركة</span>
-                <Icon name="left" size={12} />
-                <span>الفرع</span>
-                <Icon name="left" size={12} />
-                <span>الطاولة</span>
-                <small>
-                  المعلومة الصحيحة. والصلاحية المناسبة. دون تداخل أو تعقيد.
-                </small>
-              </div>
+
               <div
                 className="workflow"
                 role="tablist"
@@ -680,12 +666,12 @@ export default function Landing() {
                 eyebrow="أقل تعقيدًا. أكثر تكاملًا."
                 title={
                   <>
-                    ست منظومات.
+                    شغل مطعمك
                     <br />
-                    <span className="coral-text">تجربة تشغيل واحدة.</span>
+                    <span className="coral-text">كلّه مترابط</span>
                   </>
                 }
-                description="كل جزء يؤدي وظيفة واضحة. وجميع الأجزاء تعمل معًا لتبسيط دورة التشغيل اليومية."
+                description="من المنيو إلى الحسابات، كل جزء يكمل الثاني."
               />
               <div className="feature-grid">
                 {features.map((item, i) => (
@@ -1101,23 +1087,21 @@ export default function Landing() {
                 eyebrow="تسعير صُمم حول احتياجاتك، لا حول باقاتنا"
                 title={
                   <>
-                    لا تدفع مقابل
+                    إشترك على
                     <br />
-                    <span className="coral-text">ما لا تحتاج إليه.</span>
+                    <span className="coral-text">قدّ إحتياجك</span>
                   </>
                 }
-                description="لماذا تختار باقة كبيرة فقط لأن الميزة التي تحتاج إليها موجودة فيها؟ ولماذا تقبل بباقة صغيرة لا تلبي احتياجاتك؟"
+                description="إبدأ بأسياسات مطعمك، وأضف المميزات اللي تحتاجها وقت ما تحتاجها."
               />
               <div className="pricing-formula">
                 <span
                   className={`pricing-formula-item ${isNationalDay ? "bg-(--cream)!" : "bg-[#f2f5e9]!"}`}
                 >
-                  نظام أساسي للتشغيل اليومي
+                  أساسيات التشغيل اليومي
                 </span>
                 <Icon name="plus" size={17} />
-                <span className="pricing-formula-item">
-                  ميزات متقدمة، وقت ما تحتاجها
-                </span>
+                <span className="pricing-formula-item">إضافات على اختيارك</span>
               </div>
               <div className="pricing-layout">
                 <Reveal

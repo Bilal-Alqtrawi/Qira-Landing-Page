@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/next";
 import NationalDayTheme from "@/components/national-day-theme";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import SeoSchema from "@/components/schema-seo";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
@@ -18,51 +19,86 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "منصة قِرى | Qira — سيستم يظبط إدارة مطعمك وكافيهك",
+    default: "منصة قِرى | Qira — منصة واحدة تدير مطعمك وكافيهك بالكامل",
     template: "%s | منصة قِرى",
   },
   description:
-    "تبي تريح بالك وتدير مطعمك بذكاء؟ قِرى تجمع لك الكاشير، نظام المطبخ، منيو الـ QR، والفوترة المعتمدة من زاتكا بجهة واحدة. جربها مجاناً الحين!",
+    "مطعمك يحتاج منصة واحدة فقط! قِرى تربط لك الكاشير، شاشة المطبخ، منيو الـ QR، وإدارة المناوبات والفوترة المعتمدة من زاتكا. اشترك على قد احتياجك وجربها مجاناً.",
   applicationName: "منصة قِرى",
+  category: "Restaurant Management Platform",
+  authors: [{ name: "منصة قِرى", url: site.url }],
+  creator: "منصة قِرى",
+  publisher: "منصة قِرى",
+
   keywords: [
-    "سيستم مطاعم",
-    "برنامج كاشير مطاعم",
-    "نظام كافيهات",
-    "نقاط بيع POS",
     "منصة قِرى",
-    "منيو QR",
-    "فوترة زاتكا",
+    "منصة إدارة مطاعم",
+    "منصة كافيهات",
+    "منصة كاشير سحابية",
+    "نقاط بيع POS",
+    "برنامج كاشير معتمد زاتكا",
     "شاشة المطبخ KDS",
-    "نظام مطاعم سحابي",
-    "Qira",
+    "منيو QR تفاعلي",
+    "إدارة المناوبات والحسابات",
+    "الفوترة الإلكترونية السعودية",
+    "Qira Platform",
+    "Qira POS",
   ],
-  alternates: { canonical: "/", languages: { "ar-SA": "/" } },
+
+  alternates: {
+    canonical: site.url,
+    languages: {
+      "ar-SA": site.url,
+    },
+  },
+
   openGraph: {
     type: "website",
     locale: "ar_SA",
+    url: site.url,
     siteName: "منصة قِرى | Qira",
-    title: "منصة قِرى | كل تشغيل مطعمك بجهة واحدة",
+    title: "منصة قِرى | شغل مطعمك كله مترابط من منصة واحدة",
     description:
-      "من أول طلب لين الفاتورة والتقارير المباشرة.. قِرى تظبط لك الكاشير والمطبخ وتخلي تشغيل مطعمك أسهل وأسرع. ابدأ تجربتك المجانية الحين.",
-    url: "/",
+      "من أول طلب، لين آخر حساب.. منصة قِرى تربط الطلب بالمطبخ والكاشير وتخليك تتابع كل خطوة دون تشتت أنظمة. ابدأ بأساسيات مطعمك الحين مجاناً.",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/qira-og.png",
         width: 1200,
         height: 630,
-        alt: "منصة قِرى | Qira - سيستم سحابي للمطاعم والمقاهي",
+        alt: "منصة قِرى - منصة سحابية متكاملة لإدارة المطاعم والمقاهي",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "منصة قِرى | Qira — سيستم متكامل للمطاعم والمقاهي",
+    title: "منصة قِرى | Qira — منصة متكاملة لإدارة المطاعم والمقاهي",
     description:
-      "الكاشير، المطبخ، والفوترة الإلكترونية بجهة واحدة. ارتاح من حوسة التشغيل وجرب قِرى مجاناً الحين.",
-    images: ["/opengraph-image"],
+      "الكاشير، المطبخ، والفوترة الإلكترونية في منصة واحدة. اشترك على قد احتياجك وارتاح من حوسة وتشتت الأنظمة.",
+    images: ["/qira-og.png"],
   },
-  icons: { icon: "/logo.svg", apple: "/logo.svg" },
-  robots: { index: true, follow: true },
+
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  other: {
+    "geo.region": "SA",
+    "geo.placename": "Saudi Arabia",
+  },
 };
 
 export const viewport: Viewport = {
@@ -77,6 +113,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <head>
         <NationalDayTheme />
+        <SeoSchema />
       </head>
       <body>
         {children}
